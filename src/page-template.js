@@ -1,28 +1,29 @@
-const generateAbout = (templateData) => {
-  // console.log(employeeArray);
-  
-    return `
-      <section class="my-3" id="about">
-        <h2 class="text-dark bg-primary p-2 display-inline-block">About Me</h2>
-        <p>${templateData
-            .filter(({ role }) => role)
-            .map(({ name, id, email, role }) => {
-              return `
-              <div class="col-12 mb-2 bg-dark text-light p-3">
-                <h3 class="portfolio-item-title text-light">${name}</h3>
-                <h5 class="portfolio-languages">
-             
-                </h5>
-                <p>${email}</p>
-                <a href="${id}" class="btn"><i class="fab fa-github mr-2"></i>View Project on GitHub</a>
+const generateCards = (templateData) => {
+
+            return`
+            ${templateData
+                .filter(({ role }) => role)
+                .map(({ name, id, email, role, github, officeNumber, school }) => {
+                    return `
+            <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">${role}</h5>
+              <p class="card-text">Name: ${name}</p>
+              <p class="card-text">Employee Id: ${id}</p>
+              <p class="card-text">Email Address: ${email}</p>
+              <p class="card-text">Office Number: ${officeNumber}</p>
+              <p class="card-text">School: ${school}</p>
+              <a href="#" class="btn btn-primary">https://github.com/${github}</a>
               </div>
-            `;
+              </div>
+              `;
             })
             .join('')}
-        </p>
-      </section>
-    `;
-  };
+   
+          `;
+        
+
+};
 
   
   module.exports = templateData => {
@@ -35,10 +36,8 @@ const generateAbout = (templateData) => {
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <title>Portfolio Demo</title>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-      <link href="https://fonts.googleapis.com/css?family=Public+Sans:300i,300,500&display=swap" rel="stylesheet">
-      <link rel="stylesheet" href="style.css">
+      <title>Team Profile</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
     
     <body>
@@ -47,7 +46,7 @@ const generateAbout = (templateData) => {
         </div>
       </header>
       <main class="container my-5">
-        ${generateAbout(templateData)}
+        ${generateCards(templateData)}
       </main>
       <footer class="container text-center py-3">
       
