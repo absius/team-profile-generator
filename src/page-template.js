@@ -1,6 +1,8 @@
 const generateCards = (templateData) => {
 
             return`
+            <div class="container">
+        <div class="row">
             ${templateData
                 .filter(({ role }) => role)
                 .map(({ name, id, email, role, github, officeNumber, school }) => {
@@ -19,7 +21,8 @@ const generateCards = (templateData) => {
               `;
             })
             .join('')}
-   
+   </div>
+   </div>
           `;
         
 
@@ -27,7 +30,7 @@ const generateCards = (templateData) => {
 
   
   module.exports = templateData => {
-      console.log(templateData);
+
     return `
     <!DOCTYPE html>
     <html lang="en">

@@ -11,7 +11,7 @@ const writeFile = fileContent => {
 
       resolve({
         ok: true,
-        message: 'File created!'
+        message: ''
       });
     });
   });
@@ -28,7 +28,7 @@ const copyFile = () => {
 
       resolve({
         ok: true,
-        message: 'Stylesheet created!'
+        message: ''
       });
     });
   });

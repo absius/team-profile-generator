@@ -40,7 +40,7 @@ function writeToFile(fileName, data) {
 
 function mgrQuestions() {
       inquirer.prompt(managerQuestions).then(answers => { const mgrHTML = answers;
-        let manager = new Manager(answers.name,answers.id,answers.email);
+        let manager = new Manager(answers.name,answers.id,answers.email,answers.officeNumber);
         employeeArray.push(manager);
         if (answers.choice === 'Engineer'){
             engQuestions();
