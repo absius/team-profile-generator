@@ -4,7 +4,12 @@ const generateCards = (templateData) => {
             <div class="container">
         <div class="row">
             ${templateData
-                .filter(({ role }) => role)
+                .filter(function(role) {
+                    if (role.role != "Manager") {
+                      return false; // skip
+                    } return true;
+                })
+                //.filter(({ role }) => role)
                 .map(({ name, id, email, role, github, officeNumber, school }) => {
                     return `
             <div class="card" style="width: 18rem;">
@@ -12,10 +17,50 @@ const generateCards = (templateData) => {
               <h5 class="card-title">${role}</h5>
               <p class="card-text">Name: ${name}</p>
               <p class="card-text">Employee Id: ${id}</p>
-              <p class="card-text">Email Address: ${email}</p>
+              <a href="mailto:${email}">Email Address: ${email}</a>
               <p class="card-text">Office Number: ${officeNumber}</p>
-              <p class="card-text">School: ${school}</p>
+              </div>
+              </div>
+              `;
+            })
+            .join('')}
+            ${templateData
+                .filter(function(role) {
+                    if (role.role != "Engineer") {
+                      return false; // skip
+                    } return true;
+                })
+                //.filter(({ role }) => role)
+                .map(({ name, id, email, role, github, officeNumber, school }) => {
+                    return `
+            <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">${role}</h5>
+              <p class="card-text">Name: ${name}</p>
+              <p class="card-text">Employee Id: ${id}</p>
+              <a href="mailto:${email}">Email Address: ${email}</a>
               <a href="#" class="btn btn-primary">https://github.com/${github}</a>
+              </div>
+              </div>
+              `;
+            })
+            .join('')}
+            ${templateData
+                .filter(function(role) {
+                    if (role.role != "Intern") {
+                      return false; // skip
+                    } return true;
+                })
+                //.filter(({ role }) => role)
+                .map(({ name, id, email, role, github, officeNumber, school }) => {
+                    return `
+            <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">${role}</h5>
+              <p class="card-text">Name: ${name}</p>
+              <p class="card-text">Employee Id: ${id}</p>
+              <a href="mailto:${email}">Email Address: ${email}</a>
+              <p class="card-text">Office Number: ${school}</p>
               </div>
               </div>
               `;
@@ -46,6 +91,7 @@ const generateCards = (templateData) => {
     <body>
       <header>
         <div class="container flex-row justify-space-between align-center py-3">
+        <h1>Team Profile</h2>
         </div>
       </header>
       <main class="container my-5">
